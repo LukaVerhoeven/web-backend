@@ -48,11 +48,14 @@ if ( isset ( $_GET['artikelnummer'] ) )
 			$artikels 			= 	array( $artikels[$id] );
 			$overzicht	=	false;
 		}		
-	}
+	}else{
+    $overzicht	=	true;
+    
+}
 
 /*please explain why artikelnummer stay null???????????*/
 
-    /* 
+    
     
     if  ($_GET["artikelnummer"] == null){
                       $overzicht = true;
@@ -64,7 +67,7 @@ if ( isset ( $_GET['artikelnummer'] ) )
      }
          
   
-   */               
+                
 
 
 ?>

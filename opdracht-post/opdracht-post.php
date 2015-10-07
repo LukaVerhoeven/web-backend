@@ -1,10 +1,10 @@
 <?php
 
-	$username	=	"Luka";
-	$password 	=	"azerty";
+	$username = "Luka";
+	$password = "azerty";
 
 
-if    (isset($_POST["submiit"])){
+if    (isset($_POST["submit"])){
     
     if    ($_POST["username"] == $username && $_POST["password"] == $password){
         
@@ -32,7 +32,7 @@ if    (isset($_POST["submiit"])){
 <label for="username">Username:</label>
 <input type="text" name="username" id="username" value="info@test.be">		<label for="password">Paswoord:</label>
 <input type="password" name="password" id="password" value="azerty">
-<input type="submit" name="submiit" value="Verzend">
+<input type="submit" name="submit" value="Verzend">
 
 </body>
 </html>
