@@ -38,9 +38,9 @@ De Fogo is met 2.829 meter een van de grootste en meest actieve vulkanen ter wer
 
 $overzicht = true;
 
-if ( isset ( $_GET['artikelnummer'] ) )
+if ( isset ( $_GET['id'] ) )
 	{
-		$id = $_GET['artikelnummer'];
+		$id = $_GET['id'];
 
 
 		if ( array_key_exists( $id , $artikels ) )
@@ -48,14 +48,13 @@ if ( isset ( $_GET['artikelnummer'] ) )
 			$artikels 			= 	array( $artikels[$id] );
 			$overzicht	=	false;
 		}		
-	}else{
-    $overzicht	=	true;
+	
     
 }
 
 /*please explain why artikelnummer stay null???????????*/
 
-    
+    /* 
     
     if  ($_GET["artikelnummer"] == null){
                       $overzicht = true;
@@ -67,7 +66,7 @@ if ( isset ( $_GET['artikelnummer'] ) )
      }
          
   
-                
+   */               
 
 
 ?>
@@ -113,6 +112,10 @@ if ( isset ( $_GET['artikelnummer'] ) )
     }
     .overzichtgroot h3, p , img{
       
+    }
+    
+    .overzichtgroot a {
+        display:none;
     }
     
 </style>
