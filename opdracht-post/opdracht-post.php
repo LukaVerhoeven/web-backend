@@ -28,11 +28,15 @@ if    (isset($_POST["submit"])){
 </head>
 <body>
     		
-
+<form action="opdracht-post.php" method="POST">
+   
 <label for="username">Username:</label>
-<input type="text" name="username" id="username" value="info@test.be">		<label for="password">Paswoord:</label>
+<input type="text" name="username" id="username">		<label for="password">Paswoord:</label>
 <input type="password" name="password" id="password" value="azerty">
 <input type="submit" name="submit" value="Verzend">
+      
+</form>
+
 
 </body>
 </html>
