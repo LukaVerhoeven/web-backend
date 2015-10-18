@@ -31,11 +31,11 @@ session_start();
     <form action="opdracht-session2.php" method="POST" >
         
 <label for="email">E-mail:</label>
-<input type="text" name="email" id="email" value="test@test.test">
+<input type="text" name="email" id="email" value="<?=(isset( $_SESSION["Registratie"][0])) ? $_SESSION["Registratie"][0] : '' ?>">
 
 <p></p>         
 <label for="name">Nickname:</label>
-<input type="text" name="name" id="name" value="CHICKIN">
+<input type="text" name="name" id="name" value="<?=(isset( $_SESSION["Registratie"][1])) ? $_SESSION["Registratie"][1] : '' ?>">
   
 <p></p>    
 <input type="submit" name="submit" id="submit" value="Volgende">    
