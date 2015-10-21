@@ -28,7 +28,7 @@ $uitkomst = 0;
 </style>
 </head>
 <body > 
-  <table >
+  <table>
   
 			<?php for( $getal1 = 0; $getal1 < $aantalrijen; ++$getal1 ): ?>
         
