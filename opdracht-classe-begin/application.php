@@ -7,7 +7,7 @@ function __autoload($class_name) {
 $new = 150;
 $unit = 100;
 $Percent = new percent($new,$unit);
-
+var_dump($Percent);
 
 ?>
 <!DOCTYPE html>
