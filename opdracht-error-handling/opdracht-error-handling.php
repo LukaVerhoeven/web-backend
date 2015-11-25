@@ -26,7 +26,7 @@ try
 			}
 			catch( Exception $e )
 			{               
-		          $messageCode = $e->getMessage();
+		        $messageCode = $e->getMessage();
                 $message = array();
                 $createMessage = false;
               

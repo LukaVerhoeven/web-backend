@@ -12,14 +12,6 @@ $newhtml->buildHeader();
 $newhtml->buildBody();
 $newhtml->buildFooter();
 
-function findFiles($dir,$file) {
-    
-    return glob($dir. "/*." . $file);
-}
-
-function BuildJsLinks(){
-    findFiles(js,"js");
-}  
 
 
 ?>

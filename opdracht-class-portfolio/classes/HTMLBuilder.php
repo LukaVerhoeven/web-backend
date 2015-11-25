@@ -13,17 +13,30 @@ class HTMLBuilder {
         $this->footer = $Footer;
     }
     
-    public function buildHeader(){
-        
+    public function buildHeader(){        
+        $cssLinks = $this->buildCssLinks("global.css");
         include "html/".$this->header.".php";
     }
     
-    public function buildBody() {
-        include "html/".$this->footer.".php";   
+    public function buildFooter() {
+        $jsScripts = $this->buildJsLinks("script.js"); 
+        include "html/".$this->footer.".php";  
+         
     }
-        public function buildFooter(){
+
+    public function buildBody(){
+
         include "html/".$this->body.".php";
-        $jsScripts = "js/script.js";
+       
+    }
+
+    public function buildJsLinks($jsfile){
+        return '<script src="js/' . $jsfile . '"></script>';
+
+    }
+
+    public function buildCssLinks($cssfile){
+        return '<link rel="stylesheet" type="text/css" href="css/' . $cssfile . '">';
     }
     
 }

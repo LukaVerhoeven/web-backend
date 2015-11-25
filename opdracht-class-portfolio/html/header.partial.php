@@ -1,7 +1,3 @@
-<?php 
-$cssLinks = file("css\global.css")
-
-?>
 <!DOCTYPE html>
 <html>
 

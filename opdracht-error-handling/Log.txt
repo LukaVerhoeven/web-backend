@@ -22,4 +22,28 @@
 127.0.0.1
 error
 Er werd met het formulier geknoeid
+9:58:04 28/10/2015
+127.0.0.1
+error
+De kortingscode heeft niet de juiste lengte
+9:58:21 28/10/2015
+127.0.0.1
+error
+Er werd met het formulier geknoeid
+10:31:23 28/10/2015
+127.0.0.1
+error
+Er werd met het formulier geknoeid
+10:31:33 28/10/2015
+127.0.0.1
+error
+Er werd met het formulier geknoeid
+11:00:32 28/10/2015
+127.0.0.1
+error
+Er werd met het formulier geknoeid
+11:00:36 28/10/2015
+127.0.0.1
+error
+De kortingscode heeft niet de juiste lengte
 
