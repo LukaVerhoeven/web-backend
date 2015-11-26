@@ -1,6 +1,9 @@
 <?php
 session_start();
 $todo = array();
+
+
+//var_dump( str_split($arrayy));
 $todostring;
 $donestring;
 $AlleTakenZijnKlaar = false;
@@ -22,14 +25,14 @@ if (!isset($_COOKIE["todo"])){
 if (isset($_COOKIE["todo"])){
     
     $todostring = $_COOKIE["todo"] ;
-    $todo = json_decode($_COOKIE["todo"]); 
+    $todo = unserialize($_COOKIE["todo"]); 
     $_SESSION["Todo"] = $todo;
 }
 
 if (isset($_COOKIE["done"])){
     
     $donestring = $_COOKIE["done"] ;
-    $todo = json_decode($_COOKIE["done"]); 
+    $todo = unserialize($_COOKIE["done"]); 
     $_SESSION["done"] = $todo;
 }
 
@@ -43,7 +46,7 @@ if    (isset($_POST["submit"]) && !empty($_POST["item"])){
     
 
     $_SESSION["Todo"][] = $_POST["item"];     
-    $todostring = json_encode($_SESSION["Todo"]);
+    $todostring = serialize($_SESSION["Todo"]);
     
     //array_push($_COOKIE["todo"] , $_SESSION["Item"]);
     setcookie( "todo" ,$todostring, time() + 300000 );
@@ -57,10 +60,10 @@ if    (isset($_POST["submit"]) && !empty($_POST["item"])){
 if    (isset($_SESSION["Todo"]) && isset($_COOKIE["todo"])){
    /*
    var_dump($_COOKIE["todo"]);
-   var_dump($todo);*/
+   var_dump($todo);
    var_dump($_SESSION["Todo"]);
     var_dump( $_SESSION["done"]);
-   
+   */
     
     
 }
@@ -74,8 +77,8 @@ if    (isset($_SESSION["Todo"]) && isset($_COOKIE["todo"])){
         
         $_SESSION["done"][] = $_SESSION["Todo"][$id];
         unset($_SESSION["Todo"][$id]);   
-        $todostring = json_encode($_SESSION["Todo"]);
-        $donestring = json_encode($_SESSION["done"]); 
+        $todostring = serialize($_SESSION["Todo"]);
+        $donestring = serialize($_SESSION["done"]); 
         setcookie( "todo" ,$todostring, time() + 300000 );
         setcookie( "done" ,$donestring, time() + 300000 );
  
@@ -87,16 +90,29 @@ if    (isset($_SESSION["Todo"]) && isset($_COOKIE["todo"])){
        
      
      $id = (int)$_POST["done"];
-     var_dump((int)$_POST["done"]);
-     var_dump($_SESSION["done"][$id]);
+    // var_dump((int)$_POST["done"]);
+     //var_dump($_SESSION["done"][$id]);
      
-        $_SESSION["todo"][] = $_SESSION["done"][$id];
+        $_SESSION["Todo"][] = $_SESSION["done"][$id];
      
         unset($_SESSION["done"][$id]);
-        $todostring = json_encode($_SESSION["Todo"]);
-        $donestring = json_encode($_SESSION["done"]); 
+        $todostring = serialize($_SESSION["Todo"]);
+        $donestring = serialize($_SESSION["done"]); 
         setcookie( "todo" ,$todostring, time() + 300000 );
         setcookie( "done" ,$donestring, time() + 300000 );
+     
+ }
+
+ if(isset($_POST["Deletetodo"]) && isset($_SESSION["Todo"][(int)$_POST["Deletetodo"]])){
+     
+          $id = (int)$_POST["Deletetodo"];
+        //var_dump($_SESSION["todo"][$id]);
+     
+        unset($_SESSION["todo"][$id]);
+        $todostring = serialize($_SESSION["Todo"]);
+        $donestring = serialize($_SESSION["done"]); 
+        setcookie( "done" ,$todostring, time() + 300000 );
+        setcookie( "todo" ,$donestring, time() + 300000 );
      
  }
         
@@ -141,6 +157,9 @@ if    (isset($_SESSION["Todo"]) && isset($_COOKIE["todo"])){
         display: block;    
         text-decoration: none;
     }
+    button{
+        margin: 10px;
+    }
     button:hover{
         //text-decoration:line-through;
         color: red;
@@ -164,7 +183,7 @@ if    (isset($_SESSION["Todo"]) && isset($_COOKIE["todo"])){
     <form action="opdracht-01-todo.php" method="POST">
     
     <button  name="todo" value="<?= $id ?>" type="submit">  <?= $_SESSION["Todo"][$id] ?></button>
-    <button  name="Delete" value="Delete" >  Delete</button>
+    <button  name="Deletetodo" value="<?= $id ?>" >  Delete</button>
     </form>
     
     
@@ -181,7 +200,7 @@ if    (isset($_SESSION["Todo"]) && isset($_COOKIE["todo"])){
     <form action="opdracht-01-todo.php" method="POST">
     
     <button  name="done" value="<?= $id ?>" type="submit">  <?= $_SESSION["done"][$id] ?></button>
-    <button  name="Delete" value="Delete" >  Delete</button>
+    <button  name="Deletedone" value="<?= $id ?>" >  Delete</button>
     </form>
     
     
