@@ -39,14 +39,53 @@ try {
 <head>
     <meta charset="UTF-8">
     <title> Document</title>
+    <style>
+        body{
+            font-family: sans-serif;
+        }
+        tr:nth-child(1n){
+             background-color: #f0f0f0;
+        }
+        tr:nth-child(2n){
+           background-color: #c7c7c7;
+        }
+    </style>
 </head>
 <body>
 <table>
-	<thead><?php foreach ($bieren as $id => $kolom) {
+	<thead>
+		<tr>
+			<?php 
 		
-		echo "<tr><td>" . $bieren[$id]["naam"] ."</td></tr>"; // $bieren[$id][$kolom]
-	}?></thead>
-	<tbody></tbody>
+        for ( $i = 0; $i < $statement->columnCount(); $i++ )
+		{
+		echo "<td>" . $statement->getColumnMeta( $i )['name'] ."</td>"; 
+            
+            }
+	  ?>
+		
+		</tr>
+	</thead>
+	
+	<tbody>
+	
+	<?php foreach ($bieren as $id => $kolom) {
+		
+		echo "<tr><td>" . $id ."</td>
+            <td>" . $bieren[$id]["biernr"] ."</td>
+            <td>" . $bieren[$id]["brouwernr"] ."</td>
+            <td>" . $bieren[$id]["naam"] ."</td>            
+            <td>" . $bieren[$id]["alcohol"] ."</td>
+            <td>" . $bieren[$id]["soortnr"] ."</td>
+            <td>" . $bieren[$id]["brnaam"] ."</td>
+            <td>" . $bieren[$id]["adres"] ."</td>
+            <td>" . $bieren[$id]["postcode"] ."</td>
+            <td>" . $bieren[$id]["gemeente"] ."</td>
+            <td>" . $bieren[$id]["omzet"] ."</td>
+            </tr>"; 
+	}?>
+
+	</tbody>
 	<tfoot></tfoot>
 
 </table>
