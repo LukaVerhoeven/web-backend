@@ -109,8 +109,8 @@ if    (isset($_SESSION["Todo"]) && isset($_COOKIE["todo"])){
         //var_dump($_SESSION["todo"][$id]);
      
         unset($_SESSION["todo"][$id]);
-        $donestring = serialize($_SESSION["done"]); 
-        setcookie( "done" ,$todostring, time() + 300000 );
+        $todostring = serialize($_SESSION["Todo"]); 
+        setcookie( "todo" ,$donestring, time() + 300000 );
      
  }
         
