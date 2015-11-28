@@ -5,11 +5,12 @@ try {
 
 	$db = new PDO('mysql:host=localhost;dbname=bieren', 'root', '', array (PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-	
-	$queryString =  'SELECT * FROM bieren
+
+	$queryString =  'SELECT *
+                    FROM bieren
 					join brouwers b
 					ON bieren.brouwernr = b.brouwernr
-					WHERE 
+					WHERE
 					bieren.naam like "du%" and b.brnaam like "%a%"';
 
 
@@ -21,16 +22,16 @@ try {
 		{
 			$bieren[]	=	$bier;
 		}
-	
-	
+
+
 } catch (Exception $e) {
 
     $message["type"] = "error";
-    $message["text"] = "er is iets misgelopen met het inladen van de database";
-                
+    $message["text"] = "er is iets misgelopen met het inladen van de database of de query";
+
 	 echo $message["text"];
 
- 
+
 }
 
 ?>
@@ -55,26 +56,46 @@ try {
 <table>
 	<thead>
 		<tr>
-			<?php 
-		
+			<?php
+
         for ( $i = 0; $i < $statement->columnCount(); $i++ )
 		{
-		echo "<td>" . $statement->getColumnMeta( $i )['name'] ."</td>"; 
-            
+            if($i < 5 || $i > 5 ){
+		echo "<td>" . $statement->getColumnMeta( $i )['name'] ."</td>";
+            }
+
             }
 	  ?>
-		
+
 		</tr>
 	</thead>
-	
+
 	<tbody>
-	
-	<?php foreach ($bieren as $id => $kolom) {
-		
+
+
+
+
+
+	<?php
+        foreach ($bieren as $id => $rij) {
+            echo "<tr>";
+        foreach ($rij as $i => $kolom) {
+
+
+            echo "<td>" . $kolom ."</td>";
+
+            }
+            echo "</tr>";
+        }
+
+        ?>
+
+	<?php /*foreach ($bieren as $id => $kolom) {
+
 		echo "<tr><td>" . $id ."</td>
             <td>" . $bieren[$id]["biernr"] ."</td>
             <td>" . $bieren[$id]["brouwernr"] ."</td>
-            <td>" . $bieren[$id]["naam"] ."</td>            
+            <td>" . $bieren[$id]["naam"] ."</td>
             <td>" . $bieren[$id]["alcohol"] ."</td>
             <td>" . $bieren[$id]["soortnr"] ."</td>
             <td>" . $bieren[$id]["brnaam"] ."</td>
@@ -82,13 +103,14 @@ try {
             <td>" . $bieren[$id]["postcode"] ."</td>
             <td>" . $bieren[$id]["gemeente"] ."</td>
             <td>" . $bieren[$id]["omzet"] ."</td>
-            </tr>"; 
-	}?>
+            </tr>";
+	} */ ?>
+
 
 	</tbody>
 	<tfoot></tfoot>
 
 </table>
-    
+
 </body>
 </html>

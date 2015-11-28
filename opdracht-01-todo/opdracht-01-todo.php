@@ -8,6 +8,8 @@ $todostring;
 $donestring;
 $AlleTakenZijnKlaar = false;
 
+
+
 if (!isset($_SESSION["Todo"])){
    $_SESSION["Todo"]= array();  
 }
@@ -37,6 +39,16 @@ if (isset($_COOKIE["done"])){
 }
 
 
+ if(isset($_POST["Deletetodo"]) && isset($_SESSION["Todo"][(int)$_POST["Deletetodo"]])){
+     
+          $id = (int)$_POST["Deletetodo"];
+        //var_dump($_SESSION["todo"][$id]);
+     
+        unset($_SESSION["todo"][$id]);
+        $todostring = serialize($_SESSION["Todo"]); 
+        setcookie( "todo" ,$todostring, time() + 300000 );
+     
+ }
 
 
 
@@ -103,16 +115,7 @@ if    (isset($_SESSION["Todo"]) && isset($_COOKIE["todo"])){
      
  }
 
- if(isset($_POST["Deletetodo"]) && isset($_SESSION["Todo"][(int)$_POST["Deletetodo"]])){
-     
-          $id = (int)$_POST["Deletetodo"];
-        //var_dump($_SESSION["todo"][$id]);
-     
-        unset($_SESSION["todo"][$id]);
-        $todostring = serialize($_SESSION["Todo"]); 
-        setcookie( "todo" ,$donestring, time() + 300000 );
-     
- }
+
         
 
 
