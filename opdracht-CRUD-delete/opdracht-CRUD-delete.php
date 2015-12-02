@@ -1,13 +1,17 @@
 <?php
 
+
 try {
 
 	$db = new PDO('mysql:host=localhost;dbname=bieren', 'root', '', array (PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-if (isset($_POST["delete"]))) {
-		/*
-		$queryDeleteString ='delete b from bieren b where biernr is '. $_POST["delete"]) .'';
-		*/
+if (isset($_POST["delete"])) {
+
+	$bierid = $_POST["delete"];
+
+
+		$queryDeleteString ='DELETE b FROM bieren as b where biernr = '. $bierid ;
+	
 		$statementdelete = $db->prepare($queryDeleteString);
 		$statementdelete->execute();
 
@@ -81,14 +85,16 @@ if (isset($_POST["delete"]))) {
 
 
 					<?php
-					$value;
+
 				        foreach ($bieren as $id => $rij) {
+									$value= 0;
 				            echo "<tr>";
 				        foreach ($rij as $i => $kolom) {
 
 
 				            echo "<td>" . $kolom ."</td>";
-										if($rij=="biernr"){
+
+										if($i=="biernr"){
 											$value = $kolom;
 
 										}

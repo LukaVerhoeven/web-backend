@@ -1,4 +1,6 @@
+
 <?php
+//http://oplossingen.web-backend.local/opdracht-CRUD-delete/opdracht-CRUD-delete.php
     $demooiearray = array( "tijger" , "olfifant" , "anaconda", "zeepaardje","aap","vis","panda","arend","wandelende tak","witte haai");
 
 $dieren[] = "tijger";
@@ -29,6 +31,6 @@ $dieren[] = "witte haai";
    <p><?php var_dump($demooiearray)?></p>
    <p><?php var_dump($dieren)?></p>
    <p><?php var_dump($voertuigen)?></p>
-    
+
 </body>
 </html>
