@@ -95,7 +95,7 @@ if (!$_SESSION["user"]["genereerPass"]) {
                         setcookie( 'login', $_SESSION["user"]["e-mail"] . "," . $hashedemail   , time() + (60*60*24*30) );
 
                         //inputvelden terug leegmaken + succesboodschap
-                        unset($_SESSION["user"]["e-mail"]);
+                        //unset($_SESSION["user"]["e-mail"]);
                         unset($_SESSION["user"]["passwoord"]);
 
                         //redirect naar dashboard.php
