@@ -42,10 +42,7 @@ if (isset($_COOKIE["login"])) {
       <input type="password" name="passwoord" id="passwoord "value="">
       <input type="submit" name="Inloggen" value="Inloggen">
     </form>
-    <p>
-      Nog geen account? Maak er dan eentje op de
-      <a href="http://oplossingen.web-backend.local/Opdracht-security-login/Opdracht-security-login.php">Registratiepagina</a>
-    </p>
+
 
   </body>
 </html>
