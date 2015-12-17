@@ -32,7 +32,10 @@
   </head>
   <body>
     <h1>Contacteer ons</h1>
-    <?=  (isset($_SESSION["Message"])? "<h6>" . $_SESSION["Message"] . "</h6>" : "<h6></h6>") ?>
+    <?php  if(isset($_SESSION["Message"])){
+      echo "<h6>" . $_SESSION["Message"] . "</h6>";
+      //unset($_SESSION["Message"]);
+    } ?>
     <form  action="contact.php" method="post">
       <label for="email">E-mailadress</label>
       <input type="text" name="email" id="email" value=<?= (isset($_SESSION["email"])? $_SESSION["email"]: "")  ?>>

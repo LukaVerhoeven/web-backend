@@ -5,8 +5,7 @@ $_SESSION["boodschap"] = $_POST["boodschap"];
 $admin  = $_POST["email"];
 
 
-
-if (isset($_POST["email"]) && $_POST["boodschap"]) {
+if (!empty($_POST["email"]) && !empty($_POST["boodschap"])) {
 
   try {
     var_dump(isset($_POST["checkbox"]));
@@ -30,16 +29,20 @@ if (isset($_POST["email"]) && $_POST["boodschap"]) {
 
   } catch (Exception $e) {
     $_SESSION["Messageverstuurd"] = false;
+    $_SESSION["Message"] = "er is iets misgelopen met de database";
     $message["text"] = "er is iets misgelopen met de database";
   	echo $message["text"];
   }
 
-}elseif (!isset($_POST["email"])) {
+}elseif (!empty($_POST["boodschap"])) {
   $_SESSION["Messageverstuurd"] = false;
   $_SESSION["Message"] = "Er is geen E-mail adress ingevuld";
-}else {
+}elseif (!empty($_POST["email"])) {
   $_SESSION["Messageverstuurd"] = false;
   $_SESSION["Message"] = "Er is geen boodschap adress ingevuld";
+}else {
+  $_SESSION["Messageverstuurd"] = false;
+  $_SESSION["Message"] = "Er is niets ingevuld";
 }
 header("Location: http://oplossingen.web-backend.local/opdracht-mail/contact-form.php");
  ?>
