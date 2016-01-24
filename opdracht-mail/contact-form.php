@@ -34,6 +34,7 @@
     <h1>Contacteer ons</h1>
     <?php  if(isset($_SESSION["Message"])){
       echo "<h6>" . $_SESSION["Message"] . "</h6>";
+
       //unset($_SESSION["Message"]);
     } ?>
     <form  action="contact.php" method="post">

@@ -88,7 +88,15 @@ if (!$_SESSION["user"]["genereerPass"]) {
                         $hashedpass = hash("SHA512", $passwordWithSalt);
                         $hashedemail =  hash("SHA512", $emailWithSalt );
 
-                        $queryString2 = 'Insert into users(ID, email, salt, hashed_password , last_login_time ) values( null , "'. $_SESSION["user"]["e-mail"] .'" , "' .$Salt .'", "' . $hashedpass .'", NOW()) ';
+                        $queryString2 = 'INSERT INTO users(ID,
+																											email,
+																											salt,
+																											hashed_password ,
+																											last_login_time ) values( null , "'. $_SESSION["user"]["e-mail"] .'" , "' .$Salt .'", "' . $hashedpass .'", NOW()) ';
+												//SQLINSJECT TEGENGAAN=
+												//statement bindvalue!!<-----
+												//!!!!
+
                         $statement2 = $db->prepare($queryString2);
                         $statement2->execute();
                         //setcookie
@@ -102,6 +110,7 @@ if (!$_SESSION["user"]["genereerPass"]) {
                         header("Location: http://oplossingen.web-backend.local/Opdracht-security-login/dashboard.php");
 
                       } catch (Exception $e) {
+
                         $_SESSION["user"]["EMailIsValid"] = false;
                         $_SESSION["user"]["message"] = "Er is iets missgelopen met de registratie";
                         $message["text"] = "er is iets fout gelopen met de query";

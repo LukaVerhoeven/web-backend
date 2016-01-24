@@ -18,5 +18,5 @@ if ($_POST["submit"]) {
   $replacement = "<span>#</span>";
   $_SESSION["regex"] = preg_replace("/" . $regex . "/" ,$replacement  , $string);
 }
-  header("Location: http://oplossingen.web-backend.local/opdrachr-regular-expression/opdracht-regular-expression.php");
+  header("Location: http://oplossingen.web-backend.local/opdracht-regular-expression/opdracht-regular-expression.php");
  ?>

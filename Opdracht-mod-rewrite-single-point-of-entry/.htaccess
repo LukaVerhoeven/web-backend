@@ -1,0 +1,5 @@
+
+
+	RewriteEngine on
+	ReriteRule ^Bieren.php?$ index.php?controller=bieren&method=$1&id=$2
+	ReriteRule ^index.php?$ index.php?controller=bieren&method=$1&id=$2

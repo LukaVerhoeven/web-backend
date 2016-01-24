@@ -35,7 +35,7 @@
 
     </form>
 
-    <?= $_SESSION["regex"] ?>
+    <?= (isset($_SESSION["regex"]))?$_SESSION["regex"]: ""  ?>
 
   </body>
 </html>
